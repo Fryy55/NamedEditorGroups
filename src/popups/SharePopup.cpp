@@ -39,7 +39,8 @@ bool SharePopup::setup()
 
 	auto importBorder = geode::ListBorders::create();
 	importBorder->setPosition({ 78.f, 105.f });
-	importBorder->setContentSize({ 140.f, 60.f });
+	importBorder->setContentSize({ 235.f, 105.f });
+	importBorder->setScale(0.6f);
 	this->m_buttonMenu->addChild(importBorder, -1);
 
 	auto importLabel = CCLabelBMFont::create("Import", "goldFont.fnt");
@@ -75,7 +76,8 @@ bool SharePopup::setup()
 
 	auto exportBorder = geode::ListBorders::create();
 	exportBorder->setPosition({ 78.f, 40.f });
-	exportBorder->setContentSize({ 140.f, 60.f });
+	exportBorder->setContentSize({ 235.f, 105.f });
+	exportBorder->setScale(0.6f);
 	this->m_buttonMenu->addChild(exportBorder, -1);
 
 	auto exportLabel = CCLabelBMFont::create("Export", "goldFont.fnt");
