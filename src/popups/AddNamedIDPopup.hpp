@@ -14,6 +14,7 @@ public:
 
 protected:
 	bool setup(short, std::function<void(short)>&&, std::function<void()>&&) override;
+	void keyDown(cocos2d::enumKeyCodes) override;
 
 	void onSaveButton(cocos2d::CCObject*) override;
 

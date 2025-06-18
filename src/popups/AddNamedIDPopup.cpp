@@ -46,6 +46,20 @@ bool AddNamedIDPopup::setup(short, std::function<void(short)>&&, std::function<v
 	return true;
 }
 
+void AddNamedIDPopup::keyDown(enumKeyCodes key)
+{
+	switch (key)
+	{
+		case KEY_Escape:
+			onSaveButton(nullptr);
+			if (this->m_id_input->getString().empty() || this->m_named_id_input->getString().empty())
+				this->removeFromParent();
+			break;
+		default:
+			break;
+	}
+}
+
 void AddNamedIDPopup::onSaveButton(CCObject*)
 {
 	if (this->m_id_input->getString().empty() || this->m_named_id_input->getString().empty())
@@ -55,7 +69,9 @@ void AddNamedIDPopup::onSaveButton(CCObject*)
 	auto namedID = geode::utils::numFromString<short>(this->m_id_input->getString());
 
 	if (namedID.isErr())
+	{
 		return;
+	}
 
 	if (
 		auto otherNamedID = NIDManager::getIDForName(m_nid, namedIDStr);
