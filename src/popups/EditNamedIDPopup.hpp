@@ -16,8 +16,7 @@ protected:
 	bool setup(short, std::function<void(short)>&&, std::function<void()>&&) override;
 	virtual void keyBackClicked() override {};
 	virtual void keyDown(cocos2d::enumKeyCodes) override;
-
-	virtual ~EditNamedIDPopup() override;
+	virtual void onExit() override;
 
 public:
 	void onInfoIcon(cocos2d::CCObject*);

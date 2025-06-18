@@ -121,13 +121,15 @@ void EditNamedIDPopup<nid>::keyDown(enumKeyCodes key)
 }
 
 template<NID nid>
-EditNamedIDPopup<nid>::~EditNamedIDPopup<nid>()
+void EditNamedIDPopup<nid>::onExit()
 {
 	CCTouchDispatcher::get()->unregisterForcePrio(m_id_input);
+
+	Popup<short, std::function<void(short)>&&, std::function<void()>&&>::onExit();
 }
 
 template <NID nid>
-void EditNamedIDPopup<nid>::onInfoIcon(CCObject*)
+void EditNamedIDPopup<nid>::onInfoIcon(CCObject*)/*  */
 {
 	FLAlertLayer::create(
 		nullptr,
