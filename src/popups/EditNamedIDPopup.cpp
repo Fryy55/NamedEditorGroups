@@ -123,7 +123,7 @@ void EditNamedIDPopup<nid>::keyDown(enumKeyCodes key)
 template<NID nid>
 EditNamedIDPopup<nid>::~EditNamedIDPopup<nid>()
 {
-	CCTouchDispatcher::get()->unregisterForcePrio(this);
+	CCTouchDispatcher::get()->unregisterForcePrio(m_id_input);
 }
 
 template <NID nid>
@@ -252,7 +252,7 @@ void EditNamedIDPopup<nid>::onClearIDNameButton(CCObject*)
 template <NID nid>
 void EditNamedIDPopup<nid>::registerWithTouchDispatcher()
 {
-	CCTouchDispatcher::get()->registerForcePrio(this, 6);
+	CCTouchDispatcher::get()->registerForcePrio(m_id_input, 6);
 	CCTouchDispatcher::get()->addTargetedDelegate(this, CCTouchDispatcher::get()->getTargetPrio(), true);
 }
 
