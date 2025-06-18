@@ -129,7 +129,7 @@ void EditNamedIDPopup<nid>::onExit()
 }
 
 template <NID nid>
-void EditNamedIDPopup<nid>::onInfoIcon(CCObject*)/*  */
+void EditNamedIDPopup<nid>::onInfoIcon(CCObject*)
 {
 	FLAlertLayer::create(
 		nullptr,

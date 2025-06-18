@@ -63,7 +63,8 @@ bool AutofillNamedIDsPreview::init(NID nid, const std::string_view query)
 	m_layer_bg->addChildAtPosition(m_list, Anchor::BottomLeft);
 
 	auto listBorders = geode::ListBorders::create();
-	listBorders->setContentSize(SCROLL_LAYER_SIZE);
+	listBorders->setContentSize(SCROLL_LAYER_SIZE * 1.425f);
+	listBorders->setScale(0.7f);
 	this->addChildAtPosition(listBorders, Anchor::Center, { -2.5f, .0f });
 
 	m_scroll_bar = geode::Scrollbar::create(m_list);
