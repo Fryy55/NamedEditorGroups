@@ -177,15 +177,7 @@ void NIDSetupTriggerPopup::onEditIDNameButton(CCObject* sender)
 		},
 		[&] {
 			this->textChanged(idInputInfo.idInput);
-		},
-		// color triggers
-		(
-			m_fields->m_objectID == 900 ||
-			m_fields->m_objectID == 899 ||
-			m_fields->m_objectID == 105 ||
-			m_fields->m_objectID == 30 ||
-			m_fields->m_objectID == 29
-		) && ng::globals::g_isBetterColorPickerLoaded
+		}
 	);
 }
 

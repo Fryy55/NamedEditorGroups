@@ -10,11 +10,9 @@
 using namespace geode::prelude;
 
 template <NID nid>
-EditNamedIDPopup<nid>* EditNamedIDPopup<nid>::create(short id, std::function<void(short)>&& changedIDCallback, std::function<void()>&& savedCallback, bool addTargetedDelegate)
+EditNamedIDPopup<nid>* EditNamedIDPopup<nid>::create(short id, std::function<void(short)>&& changedIDCallback, std::function<void()>&& savedCallback)
 {
 	auto ret = new EditNamedIDPopup<nid>();
-
-	ret->m_apply_touch_prio_fix = addTargetedDelegate;
 
 	if (ret && ret->initAnchored(240.f, 150.f, id, std::move(changedIDCallback), std::move(savedCallback)))
 		ret->autorelease();
@@ -106,6 +104,26 @@ bool EditNamedIDPopup<nid>::setup(short id, std::function<void(short)>&& changed
 		m_named_id_input->setString(fmt::format("{}", namedID.unwrap()));
 
 	return true;
+}
+
+template <NID nid>
+void EditNamedIDPopup<nid>::keyDown(enumKeyCodes key)
+{
+	switch (key)
+	{
+		case KEY_Escape:
+			onSaveButton(nullptr);
+			break;
+
+		default:
+			break;
+	}
+}
+
+template<NID nid>
+EditNamedIDPopup<nid>::~EditNamedIDPopup<nid>()
+{
+	CCTouchDispatcher::get()->unregisterForcePrio(this);
 }
 
 template <NID nid>
@@ -234,8 +252,8 @@ void EditNamedIDPopup<nid>::onClearIDNameButton(CCObject*)
 template <NID nid>
 void EditNamedIDPopup<nid>::registerWithTouchDispatcher()
 {
-	if (m_apply_touch_prio_fix)
-		CCTouchDispatcher::get()->addTargetedDelegate(this, -511, true);
+	CCTouchDispatcher::get()->registerForcePrio(this, 6);
+	CCTouchDispatcher::get()->addTargetedDelegate(this, CCTouchDispatcher::get()->getTargetPrio(), true);
 }
 
 
