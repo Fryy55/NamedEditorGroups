@@ -138,7 +138,7 @@ void EditNamedIDPopup<nid>::onInfoIcon(CCObject*)
 			"<cg>(it's recommended to keep them shorter than 14 characters)</c>. "
 			"It is also recommended that the ID's name <cy>shouldn't</c> only contain <cy>numbers</c> or <cy>only symbols</c>.\n"
 			"And finally each ID <cr>must</c> have its own <cy>unique name</c>.\n"
-			"Valid character are: <cg>{}</c>",
+			"Valid characters are: <cg>{}</c>",
 			ng::constants::MAX_NAMED_ID_LENGTH,
 			ng::constants::VALID_NAMED_ID_CHARACTERS
 		),
