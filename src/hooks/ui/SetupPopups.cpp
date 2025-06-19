@@ -17,7 +17,7 @@ using namespace geode::prelude;
 
 
 cocos2d::CCArray* NIDSetupTriggerPopup::createValueControlAdvanced(
-	int property, gd::string label, const CCPoint& position,
+	int property, gd::string label, CCPoint position,
 	float scale, bool unk1, InputValueType valueType,
 	int unk2, bool unk3, float sliderMin,
 	float sliderMax, int page, int group,

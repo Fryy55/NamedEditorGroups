@@ -33,7 +33,7 @@ struct NIDSetupTriggerPopup : geode::Modify<NIDSetupTriggerPopup, SetupTriggerPo
 		short m_objectID;
 	};
 
-	cocos2d::CCArray* createValueControlAdvanced(int, gd::string, const cocos2d::CCPoint&, float, bool, InputValueType, int, bool, float, float, int, int, GJInputStyle, int, bool);
+	cocos2d::CCArray* createValueControlAdvanced(int, gd::string, cocos2d::CCPoint, float, bool, InputValueType, int, bool, float, float, int, int, GJInputStyle, int, bool);
 
 	void triggerArrowLeft(cocos2d::CCObject*);
 	void triggerArrowRight(cocos2d::CCObject*);
