@@ -10,7 +10,6 @@
 
 #include <NIDManager.hpp>
 
-#include "globals.hpp"
 #include "constants.hpp"
 #include "DynamicPropertyTypes.hpp"
 
@@ -18,7 +17,7 @@ using namespace geode::prelude;
 
 
 cocos2d::CCArray* NIDSetupTriggerPopup::createValueControlAdvanced(
-	int property, gd::string label, CCPoint position,
+	int property, gd::string label, const CCPoint& position,
 	float scale, bool unk1, InputValueType valueType,
 	int unk2, bool unk3, float sliderMin,
 	float sliderMax, int page, int group,
@@ -27,7 +26,7 @@ cocos2d::CCArray* NIDSetupTriggerPopup::createValueControlAdvanced(
 	// it seems like the game does nothing with the returned array, but we should add our stuff either way
 	// in case it ever does
 	auto nodes = SetupTriggerPopup::createValueControlAdvanced(
-		property, label, position,
+		property, std::move(label), position,
 		scale, unk1, valueType,
 		unk2, unk3, sliderMin,
 		sliderMax, page, group,
@@ -209,15 +208,13 @@ NIDSetupTriggerPopup::IDInputInfo NIDSetupTriggerPopup::commonInputSetup(
 	);
 
 	for (auto node : nodes)
+	{
 		if (auto bg = typeinfo_cast<cocos2d::extension::CCScale9Sprite*>(node))
 		{
 			scale = node->getScale();
 			bg->setContentSize({ 50.f, 30.f });
-			break;
 		}
 
-	for (auto node : nodes)
-	{
 		if (typeinfo_cast<CCLabelBMFont*>(node))
 		{
 			node->setPositionY(node->getPositionY() + 11.f * scale);

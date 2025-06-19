@@ -13,13 +13,13 @@ struct ToFilterImpl<geode::DispatchEvent<Args...>>
 template <class T>
 using ToFilter = typename ToFilterImpl<T>::type;
 
-$execute
+$on_mod(Loaded)
 {
 	new geode::EventListener(+[](std::string* res, NID nid, short id) {
 		if (auto result = NIDManager::getNameForID(nid, id))
 			*res = result.unwrap();
 		else
-		 	res = nullptr;
+			res = nullptr;
 
 		return geode::ListenerResult::Stop;
 	}, ToFilter<NIDManager::event::EventGetNameForID>("v2/get-name-for-id"_spr));
@@ -115,7 +115,7 @@ $execute
 	}, ToFilter<NIDExtrasManager::event::EventGetIDExtras>("v2/get-id-extras"_spr));
 
 	new geode::EventListener(+[](NamedIDExtra* res, NID nid, std::string name) {
-		if (auto result = NIDExtrasManager::getNamedIDExtras(nid, std::move(name)))
+		if (auto result = NIDExtrasManager::getNamedIDExtras(nid, name))
 			*res = result.unwrap();
 		else
 			res = nullptr;

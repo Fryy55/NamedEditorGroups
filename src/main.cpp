@@ -2,7 +2,7 @@
 
 #include "globals.hpp"
 
-$execute
+$on_mod(Loaded)
 {
 	new geode::EventListener(+[](geode::GameEvent*) {
 		ng::globals::g_isEditorIDAPILoaded = geode::Loader::get()->isModLoaded("cvolton.level-id-api");

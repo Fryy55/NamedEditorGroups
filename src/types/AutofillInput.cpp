@@ -25,8 +25,8 @@ AutofillInput::AutofillInput(const AutofillInput& other)
 	this->nid = other.nid;
 	this->textInput = other.textInput;
 	this->autofillPreview.swap(other.autofillPreview);
-	this->editInputCallback = std::move(other.editInputCallback);
-	this->selectCallback = std::move(other.selectCallback);
+	this->editInputCallback = other.editInputCallback;
+	this->selectCallback = other.selectCallback;
 
 	this->textInput->setCallback([&](const std::string& str) {
 		this->onEditInput(str);
@@ -45,11 +45,14 @@ void AutofillInput::onEditInput(const std::string& str)
 
 AutofillInput& AutofillInput::operator=(const AutofillInput& other) noexcept
 {
+	if (&other == this)
+		return *this;
+
 	this->nid = other.nid;
 	this->textInput = other.textInput;
 	this->autofillPreview.swap(other.autofillPreview);
-	this->editInputCallback = std::move(other.editInputCallback);
-	this->selectCallback = std::move(other.selectCallback);
+	this->editInputCallback = other.editInputCallback;
+	this->selectCallback = other.selectCallback;
 
 	// capturing by reference uses other's this pointer
 	this->textInput->setCallback([&](const std::string& str) {
@@ -61,6 +64,9 @@ AutofillInput& AutofillInput::operator=(const AutofillInput& other) noexcept
 
 AutofillInput& AutofillInput::operator=(AutofillInput&& other) noexcept
 {
+	if (&other == this)
+		return *this;
+
 	this->nid = other.nid;
 	this->textInput = other.textInput;
 	this->autofillPreview.swap(other.autofillPreview);
