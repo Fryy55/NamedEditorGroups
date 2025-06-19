@@ -47,7 +47,7 @@ struct NIDEditLevelLayer : geode::Modify<NIDEditLevelLayer, EditLevelLayer>
 			geode::utils::clipboard::write(saveObjStr);
 		}
 
-		if (!NIDManager::isEmpty())
+		if (!NIDManager::isEmpty() && geode::Mod::get()->getSettingValue<bool>("show-in-edit-level-layer"))
 		{
 			auto nidSettingsSpr = cocos2d::CCSprite::createWithSpriteFrameName("GJ_menuBtn_001.png");
 			nidSettingsSpr->setScale(.85f);

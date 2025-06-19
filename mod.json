@@ -45,6 +45,12 @@
 			"default": "{name}-{id}",
 			"match": "^(?=.*\\{name\\})(?=.*\\{id\\})(?!.*\\{\\}).*",
 			"filter": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@_-,.!$^&*()+=/<>?\\01234567890{}[]|~`%:;\"'"
+		},
+		"show-in-edit-level-layer": {
+			"type": "bool",
+			"name": "Named IDs Preview Button",
+			"description": "Shows/hides the button to preview a read-only list of named IDs on the level edit screen",
+			"default": true
 		}
 	}
 }
