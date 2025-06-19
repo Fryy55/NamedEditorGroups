@@ -1,6 +1,6 @@
 #pragma once
 
-enum class NID : std::int8_t
+enum class NID
 {
 	GROUP = 1,
 	COLLISION,

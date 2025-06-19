@@ -6,7 +6,7 @@
 
 namespace ng::parser
 {
-	enum class TokenType : std::uint8_t
+	enum class TokenType
 	{
 		LITERAL,
 		NAME,
