@@ -74,7 +74,8 @@ struct NIDSetupPulsePopup : geode::Modify<NIDSetupPulsePopup, SetupPulsePopup>
 				auto castedNode = typeinfo_cast<CCLabelBMFont*>(c);
 				return castedNode && (
 					std::string_view(castedNode->getString()) == "Group ID" ||
-					std::string_view(castedNode->getString()) == "Channel ID"
+					std::string_view(castedNode->getString()) == "Channel ID" ||
+					std::string_view(castedNode->getString()) == "ID"
 				);
 			}
 		));
