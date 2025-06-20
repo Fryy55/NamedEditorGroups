@@ -10,8 +10,8 @@
 
 using namespace geode::prelude;
 
-static auto objInArray = [](GameObject* object, const auto& container) {
-	return ng::utils::getIndexOf(container, object->m_objectID) != -1;
+static auto objInArray = [](int id, const auto& container) {
+	return ng::utils::getIndexOf(container, id) != -1;
 };
 
 struct NIDEffectGameObject : geode::Modify<NIDEffectGameObject, EffectGameObject>
@@ -26,10 +26,12 @@ struct NIDEffectGameObject : geode::Modify<NIDEffectGameObject, EffectGameObject
 	{
 		EffectGameObject::customSetup();
 
-		bool isTrigger = objInArray(this, ng::constants::TRIGGER_OBJECT_IDS_WITH_LABEL);
-		bool isCollision = objInArray(this, ng::constants::COLLISION_OBJECT_IDS_WITH_LABEL);
-		bool isCounter = objInArray(this, ng::constants::COUNTER_OBJECT_IDS_WITH_LABEL);
-		bool isTimer = objInArray(this, ng::constants::TIMER_OBJECT_IDS_WITH_LABEL);
+		auto id = this->m_objectID;
+
+		bool isTrigger = objInArray(id, ng::constants::TRIGGER_OBJECT_IDS_WITH_LABEL);
+		bool isCollision = objInArray(id, ng::constants::COLLISION_OBJECT_IDS_WITH_LABEL);
+		bool isCounter = objInArray(id, ng::constants::COUNTER_OBJECT_IDS_WITH_LABEL);
+		bool isTimer = objInArray(id, ng::constants::TIMER_OBJECT_IDS_WITH_LABEL);
 
 		if (!(isTrigger || isCollision || isCounter || isTimer))
 			return;
@@ -49,10 +51,12 @@ struct NIDLevelEditorLayer : geode::Modify<NIDLevelEditorLayer, LevelEditorLayer
 	{
 		LevelEditorLayer::updateObjectLabel(object);
 
-		bool isTrigger = objInArray(object, ng::constants::TRIGGER_OBJECT_IDS_WITH_LABEL);
-		bool isCollision = objInArray(object, ng::constants::COLLISION_OBJECT_IDS_WITH_LABEL);
-		bool isCounter = objInArray(object, ng::constants::COUNTER_OBJECT_IDS_WITH_LABEL);
-		bool isTimer = objInArray(object, ng::constants::TIMER_OBJECT_IDS_WITH_LABEL);
+		auto id = object->m_objectID;
+
+		bool isTrigger = objInArray(id, ng::constants::TRIGGER_OBJECT_IDS_WITH_LABEL);
+		bool isCollision = objInArray(id, ng::constants::COLLISION_OBJECT_IDS_WITH_LABEL);
+		bool isCounter = objInArray(id, ng::constants::COUNTER_OBJECT_IDS_WITH_LABEL);
+		bool isTimer = objInArray(id, ng::constants::TIMER_OBJECT_IDS_WITH_LABEL);
 
 		if (!(isTrigger || isCollision || isCounter || isTimer))
 			return;
@@ -64,7 +68,7 @@ struct NIDLevelEditorLayer : geode::Modify<NIDLevelEditorLayer, LevelEditorLayer
 		std::string idNameStr = "";
 		CCPoint idLabelPos;
 
-		switch (object->m_objectID)
+		switch (id)
 		{
 			// toggle block (doesn't have an ID label)
 			case 3643u:
@@ -103,7 +107,7 @@ struct NIDLevelEditorLayer : geode::Modify<NIDLevelEditorLayer, LevelEditorLayer
 		}
 
 		// Counter Trigger
-		if (object->m_objectID == 1615u)
+		if (id == 1615u)
 		{
 			auto labelNode = static_cast<LabelGameObject*>(object);
 
@@ -119,7 +123,7 @@ struct NIDLevelEditorLayer : geode::Modify<NIDLevelEditorLayer, LevelEditorLayer
 				).unwrapOr("");
 		}
 		// Pulse Trigger
-		else if (object->m_objectID == 1006u)
+		else if (id == 1006u)
 		{
 			auto pulseTrigger = static_cast<EffectGameObject*>(object);
 
@@ -134,14 +138,14 @@ struct NIDLevelEditorLayer : geode::Modify<NIDLevelEditorLayer, LevelEditorLayer
 
 		}
 		// Color Trigger
-		else if (object->m_objectID == 899u)
+		else if (id == 899u)
 		{
 			idNameStr = NIDManager::getNameForID<NID::COLOR>(
 				effectGameObj->m_targetColor
 			).unwrapOr("");
 		}
 		// Random Trigger
-		else if (effectGameObj->m_objectID == 1912u)
+		else if (id == 1912u)
 		{
 			auto id1 = NIDManager::getNameForID<NID::GROUP>(
 				effectGameObj->m_targetGroupID
