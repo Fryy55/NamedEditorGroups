@@ -208,7 +208,7 @@ struct NIDLevelEditorLayer : geode::Modify<NIDLevelEditorLayer, LevelEditorLayer
 		idNameLabel->setString(idNameStr.c_str());
 		// 28.5f is content width of move trigger, which works well for all other triggers
 		idNameLabel->limitLabelWidth(28.5f + 10.f, .5f, .1f);
-		idNameLabel->setPosition({ idLabelPos.x, idLabelPos.y - 9.f });
+		idNameLabel->setPosition(idLabelPos.x, idLabelPos.y - 9.f);
 
 		if (!hasIDNameLabel)
 		{
