@@ -38,6 +38,10 @@
 		]
 	},
 	"settings": {
+		"general-settings": {
+			"type": "title",
+			"name": "General Settings"
+		},
 		"auto-name-format": {
 			"type": "string",
 			"name": "Auto Name Format",
