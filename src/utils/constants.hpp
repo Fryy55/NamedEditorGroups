@@ -35,7 +35,7 @@ namespace ng::constants
 		3033u, 1814u, 3016u, 3660u,
 		1595u, 1912u, 2062u, 1815u,
 		1812u, 1611u, 2062u, 3609u,
-		1585u, 1006u, 3662u
+		1585u, 1006u, 3662u, 899u
 	};
 
 	inline constexpr std::array COLLISION_OBJECT_IDS_WITH_LABEL{
