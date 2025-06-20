@@ -10,7 +10,7 @@
 
 using namespace geode::prelude;
 
-auto objInArray = [](GameObject* object, const auto& container) {
+static auto objInArray = [](GameObject* object, const auto& container) {
 	return ng::utils::getIndexOf(container, object->m_objectID) != -1;
 };
 
