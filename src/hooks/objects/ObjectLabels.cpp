@@ -79,9 +79,7 @@ struct NIDLevelEditorLayer : geode::Modify<NIDLevelEditorLayer, LevelEditorLayer
 				idLabelPos = CCPoint{ 21.75f, 7.75f };
 
 				if (auto label = effectGameObj->getChildByID("counter-label"); !label)
-				{
 					if (auto idLabel = effectGameObj->getChildByType<CCLabelBMFont*>(0))
-					{
 						idLabel->setID("counter-label");
 						idLabelPos = idLabel->getPosition();
 					}
