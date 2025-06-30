@@ -329,6 +329,14 @@ void NIDSetupTriggerPopup::handleSpecialCasesPre(std::uint16_t property, CCArray
 		}
 		break;
 
+		// Keyframe
+		case 3032u: {
+			if (property == 51)
+				for (auto node : CCArrayExt<CCNode*>(nodes))
+					node->setPositionY(node->getPositionY() - 8.f);
+		}
+		break;
+
 		default:
 			break;
 	}
