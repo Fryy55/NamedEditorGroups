@@ -8,6 +8,7 @@
 #include "utils.hpp"
 
 static bool g_isDirty;
+static bool g_moreNumIDs;
 static NamedIDs g_namedGroups;
 static NamedIDs g_namedCollisions;
 static NamedIDs g_namedCounters;
@@ -129,6 +130,10 @@ const std::unordered_map<std::string, short>& NIDManager::getNamedIDs(NID nid)
 
 
 bool NIDManager::isDirty() { return g_isDirty; }
+
+bool NIDManager::getMoreNumIDsSetting() { return g_moreNumIDs; }
+
+void NIDManager::updateMoreNumIDsSetting() { g_moreNumIDs = geode::Mod::get()->getSettingValue<bool>("more-numeric-ids"); }
 
 bool NIDManager::isEmpty()
 {

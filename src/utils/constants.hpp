@@ -35,11 +35,33 @@ namespace ng::constants
 		3033u, 1814u, 3016u, 3660u,
 		1595u, 1912u, 2062u, 1815u,
 		1812u, 1611u, 2062u, 3609u,
-		1585u, 1006u, 3662u, 899u
+		1585u, 1006u, 3662u, 899u,
+		3006u, 3007u, 3008u, 3009u,
+		3010u, 3011u, 3012u, 3013u,
+		3014u, 3015u, 3024u, 3600u,
+		3604u, 3032u, 3614u, 3615u,
+		3617u, 3619u, 3620u, 3641u,
+		3618u, 3613u, 3661u, 1914u,
+		3608u, 3643u, 3640u, 1932u,
+		2066u, 3022u, 2902u, 2063u,
+		1594u, 3027u, 3023u, 3017u,
+		3018u, 3019u, 3020u, 3021u,
+		2903u
+	};
+
+	// objects to move from their zlayer batch nodes to node containers
+	inline constexpr std::array OBJECTS_TO_MOVE{
+		3006u, 3007u, 3008u, 3009u,
+		3010u, 3011u, 3012u, 3013u,
+		3014u, 3015u, 3024u, 3643u,
+		2066u, 3022u, 2902u, 2063u,
+		1594u, 3027u, 3023u, 3017u,
+		3018u, 3019u, 3020u, 3021u,
+		2903u
 	};
 
 	inline constexpr std::array COLLISION_OBJECT_IDS_WITH_LABEL{
-		1816u, 3643u
+		1816u
 	};
 
 	inline constexpr std::array COUNTER_OBJECT_IDS_WITH_LABEL{
@@ -129,7 +151,6 @@ namespace ng::constants
 		}) },
 		// Keyframe Trigger
 		{ 3032, fmap<std::uint16_t, NID, 7>({
-			// { 76, NID::ANIMATION },
 			// Target Group ID
 			{ 51, NID::GROUP },
 			// Parent ID
@@ -161,6 +182,8 @@ namespace ng::constants
 		}) },
 		// Keyframe Trigger
 		{ 3033, fmap<std::uint16_t, NID, 7>({
+			// Animation Group ID
+			{ 76, NID::GROUP },
 			// Target ID
 			{ 51, NID::GROUP },
 			// Parent ID
@@ -383,6 +406,17 @@ namespace ng::constants
 			{ 51, NID::GROUP },
 			// Target Pos
 			{ 71, NID::GROUP }
+		}) },
+		// Gradient Trigger
+		{ 2903, fmap<std::uint16_t, NID, 7>({
+			// Side/Corner 1
+			{ 203, NID::GROUP },
+			// Side/Corner 2
+			{ 204, NID::GROUP },
+			// Side/Corner 3
+			{ 205, NID::GROUP },
+			// Side/Corner 4
+			{ 206, NID::GROUP }
 		}) },
 		// Teleport Trigger
 		{ 3022, fmap<std::uint16_t, NID, 7>({
@@ -1684,6 +1718,7 @@ namespace ng::constants
 		}) },
 		// Keyframe Trigger
 		{ 3033, FMAP_GETTER_PAIR({
+			{ NID::GROUP, MAKE_GETTER_PAIR(m_animationID) },
 			{ NID::GROUP, MAKE_GETTER_PAIR(m_targetGroupID) },
 			{ NID::GROUP, MAKE_GETTER_PAIR(m_centerGroupID) }
 		}) },

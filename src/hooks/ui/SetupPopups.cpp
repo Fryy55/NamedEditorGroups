@@ -5,6 +5,7 @@
 
 #include <Geode/modify/SetupTriggerPopup.hpp>
 #include <Geode/modify/SetupAreaAnimTriggerPopup.hpp>
+#include <Geode/modify/SetupGradientPopup.hpp>
 
 #include "../popups/EditNamedIDPopup.hpp"
 
@@ -337,6 +338,32 @@ void NIDSetupTriggerPopup::handleSpecialCasesPre(std::uint16_t property, CCArray
 		}
 		break;
 
+		// Gradient Trigger
+		case 2903u: {
+			float offsetX;
+			switch (property)
+			{
+				case 203:
+					offsetX = 39.f;
+					break;
+
+				case 204:
+					offsetX = 26.f;
+					break;
+
+				case 205:
+					offsetX = 13.f;
+					break;
+
+				default:
+					return;
+			}
+
+			for (auto node : CCArrayExt<CCNode*>(nodes))
+				node->setPositionX(node->getPositionX() - offsetX);
+		}
+		break;
+
 		default:
 			break;
 	}
@@ -462,5 +489,25 @@ struct NIDSetupAreaAnimTriggerPopup : geode::Modify<NIDSetupAreaAnimTriggerPopup
 			inputInfo.idType = isEffectID ? NID::EFFECT : NID::GROUP;
 			this->textChanged(inputInfo.idInput);
 		}
+	}
+};
+
+// m_gradientLabel is initialized after createValueControlAdvanced is called
+struct NIDSetupGradientPopup : geode::Modify<NIDSetupGradientPopup, SetupGradientPopup>
+{
+	bool init(GradientTriggerObject* p0, CCArray* p1)
+	{
+		if (!SetupGradientPopup::init(p0, p1))
+			return false;
+
+		auto gradientLabels = CCArrayExt<CCLabelBMFont*>(this->m_gradientLabels);
+
+		gradientLabels[0]->setPositionX(gradientLabels[0]->getPositionX() - 39.f);
+		gradientLabels[1]->setPositionX(gradientLabels[1]->getPositionX() - 26.f);
+		gradientLabels[2]->setPositionX(gradientLabels[2]->getPositionX() - 13.f);
+		for (auto label : gradientLabels)
+			label->setPosition(label->getPositionX() + 15.f, label->getPositionY() + 12.f);
+
+		return true;
 	}
 };

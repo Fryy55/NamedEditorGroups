@@ -55,6 +55,12 @@
 			"name": "Named IDs Preview Button",
 			"description": "Shows/hides the button to preview a read-only list of named IDs on the level edit screen",
 			"default": true
+		},
+		"more-numeric-ids": {
+			"type": "bool",
+			"name": "More Numeric IDs",
+			"description": "Shows numeric IDs on triggers, that usually don't have them (End Trigger, Event Trigger, Area Triggers...), as well as shows more info about existing triggers (Move Triggers, Follow Triggers, Instant Collision Triggers...)",
+			"default": true
 		}
 	}
 }

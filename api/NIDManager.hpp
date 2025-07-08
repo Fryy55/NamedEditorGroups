@@ -80,6 +80,8 @@ namespace NIDManager
 
 #ifdef SPAGHETTDEV_NAMED_EDITOR_GROUPS_EXPORTING
 	bool isDirty();
+	bool getMoreNumIDsSetting();
+	void updateMoreNumIDsSetting();
 	bool isEmpty();
 	std::string dumpNamedIDs();
 	geode::Result<> importNamedIDs(const std::string& str);
