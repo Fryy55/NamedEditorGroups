@@ -133,7 +133,10 @@ bool NIDManager::isDirty() { return g_isDirty; }
 
 bool NIDManager::getMoreNumIDsSetting() { return g_moreNumIDs; }
 
-void NIDManager::updateMoreNumIDsSetting() { g_moreNumIDs = geode::Mod::get()->getSettingValue<bool>("more-numeric-ids"); }
+void NIDManager::updateMoreNumIDsSetting()
+{
+	g_moreNumIDs = geode::Mod::get()->getSettingValue<bool>("more-numeric-ids");
+}
 
 bool NIDManager::isEmpty()
 {

@@ -56,11 +56,51 @@
 			"description": "Shows/hides the button to preview a read-only list of named IDs on the level edit screen",
 			"default": true
 		},
+		"trigger-settings": {
+			"type": "title",
+			"name": "Trigger Settings"
+		},
 		"more-numeric-ids": {
 			"type": "bool",
 			"name": "More Numeric IDs",
 			"description": "Shows numeric IDs on triggers, that usually don't have them (<cf>End Trigger</c>, <cf>Event Trigger</c>, <cf>Area Triggers</c>...), as well as shows more info about existing triggers (<cl>Move Triggers</c>, <cl>Follow Triggers</c>, <cl>Instant Collision Triggers</c>...)",
 			"default": true
+		},
+		"color-group": {
+			"type": "color",
+			"name": "GroupID Color",
+			"description": "Color used to highlight <cc>group</c> IDs in the editor",
+			"default": [255, 255, 255]
+		},
+		"color-color": {
+			"type": "color",
+			"name": "ColorID Color",
+			"description": "Color used to highlight <cc>color</c> IDs in the editor",
+			"default": [250, 217, 106]
+		},
+		"color-counter": {
+			"type": "color",
+			"name": "CounterID Color",
+			"description": "Color used to highlight <cc>counter</c> (item) IDs in the editor",
+			"default": [255, 115, 34]
+		},
+		"color-timer": {
+			"type": "color",
+			"name": "TimerID Color",
+			"description": "Color used to highlight <cc>timer</c> IDs in the editor",
+			"default": [5, 152, 209]
+		},
+		"color-collision": {
+			"type": "color",
+			"name": "CollisionID Color",
+			"description": "Color used to highlight <cc>collision</c> IDs in the editor",
+			"default": [55, 29, 255]
+		},
+		"color-effect": {
+			"type": "color",
+			"name": "EffectID Color",
+			"description": "Color used to highlight <cc>effect</c> IDs in the editor",
+			"default": [255, 73, 253]
 		}
 	}
 }
